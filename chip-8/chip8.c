@@ -76,7 +76,7 @@ void emulateCycle() {
     // looking at the first 4 digits of opcode in switch statement
     switch (current_opcode & 0xF000) {
 
-        // ANNN
+        // ANNN - Sets I to the address NNN.
         // first four digits are opcode last 12 are data
         case 0xA000:
             // look at the last twelve digits
@@ -84,11 +84,43 @@ void emulateCycle() {
             program_counter += 2;
             break;
 
+        case 0x8000:
+            switch (current_opcode & 0x000F) {
+                // 8XY0 - Sets VX to the value of VY
+                case 0x0000:
+                    break;
+                // 8XY1 - Sets VX to VX or VY (Bitwise OR Operation)
+                case 0x0001:
+                    break;
+                // 8XY2 - Sets VX to VX and VY (Bitwise AND operation)
+                case 0x0002:
+                    break;
+                // 8XY3 - Sets VX to VX xor VY
+                case 0x0003:
+                    break;
+                // 8XY4 - Adds VY to VX. VF is set to 1 when there's a carry, and to 0 when there isn't
+                case 0x0004:
+                    break;
+                // 8XY5 - VY is subtracted from VX. VF is set to 0 when there's a borrow, and 1 when there isn't
+                case 0x0005:
+                    break;
+                // 8XY6 - Stores the least signficiant bit of VX in VF and then shifts VX to the right by 1.
+                case 0x0006:
+                    break;
+                // 8XY7 - Sets VX to VY minus VX. VF is set to 0 when there's a borrow, and 1 when there isn't.
+                case 0x0007:
+                    break;
+                // 8XYE - Stores the most significant bit of VX in VF and then shifts VX to the left by 1. 
+                case 0x000E:
+                    break;
+            }
         case 0x0000:
             switch (current_opcode & 0x0FFF) {
                 // just checking the last 3 digits
+                // Clears the screen.
                 case 0x00E0:
                     break;
+                // returns from a subroutine.
                 case 0x00EE:
                     break;
             }

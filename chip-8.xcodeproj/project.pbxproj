@@ -28,6 +28,7 @@
 		6ED1E15D2587FE6600188CB9 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		6ED1E1652587FEEB00188CB9 /* chip8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chip8.h; sourceTree = "<group>"; };
 		6ED1E1662587FEEB00188CB9 /* chip8.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chip8.c; sourceTree = "<group>"; };
+		6ED1E1692588311100188CB9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		6ED1E15C2587FE6600188CB9 /* chip-8 */ = {
 			isa = PBXGroup;
 			children = (
+				6ED1E1692588311100188CB9 /* README.md */,
 				6ED1E15D2587FE6600188CB9 /* main.c */,
 				6ED1E1652587FEEB00188CB9 /* chip8.h */,
 				6ED1E1662587FEEB00188CB9 /* chip8.c */,

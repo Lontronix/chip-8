@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6ED1E15E2587FE6600188CB9 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6ED1E15D2587FE6600188CB9 /* main.c */; };
+		6ED1E1672587FEEB00188CB9 /* chip8.c in Sources */ = {isa = PBXBuildFile; fileRef = 6ED1E1662587FEEB00188CB9 /* chip8.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		6ED1E15A2587FE6600188CB9 /* chip-8 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "chip-8"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED1E15D2587FE6600188CB9 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		6ED1E1652587FEEB00188CB9 /* chip8.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chip8.h; sourceTree = "<group>"; };
+		6ED1E1662587FEEB00188CB9 /* chip8.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = chip8.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				6ED1E15D2587FE6600188CB9 /* main.c */,
+				6ED1E1652587FEEB00188CB9 /* chip8.h */,
+				6ED1E1662587FEEB00188CB9 /* chip8.c */,
 			);
 			path = "chip-8";
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ED1E1672587FEEB00188CB9 /* chip8.c in Sources */,
 				6ED1E15E2587FE6600188CB9 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

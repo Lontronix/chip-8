@@ -76,6 +76,70 @@ void emulateCycle() {
     // looking at the first 4 digits of opcode in switch statement
     switch (current_opcode & 0xF000) {
 
+        case 0x0000:
+            switch (current_opcode & 0x0FFF) {
+                    // just checking the last 3 digits
+                    // 00E0 - Clears the screen.
+                case 0x00E0:
+                    break;
+                    // 00EE - returns from a subroutine.
+                case 0x00EE:
+                    break;
+            }
+        // 1NNN - Jumps to adress NNN
+        case 0x1000:
+            break;
+        // 2NNN - Calls subroutine at NNN.
+        case 0x2000:
+            break;
+        // 3XNN - Skips the next instruction if VX equals NN. (Usually the next instruction is a jump to skip a code block)
+        case 0x3000:
+            break;
+        //4XNN - Skips the next instruction if VX doesn't equal NN. (Usually the next instruction is a jump to skip a code block)
+        case 0x4000:
+            break;
+        //5XY0 - Skips the next instruction if VX equals VY. (Usually the next instruction is a jump to skip a code block)
+        case 0x5000:
+            break;
+        //6XNN - Sets VX to NN.
+        case 0x6000:
+            break;
+        //7XNN - Adds NN to VC (Carry flag is unchanged)
+        case 0x7000:
+            break;
+        case 0x8000:
+            switch (current_opcode & 0x000F) {
+                    // 8XY0 - Sets VX to the value of VY
+                case 0x0000:
+                    break;
+                    // 8XY1 - Sets VX to VX or VY (Bitwise OR Operation)
+                case 0x0001:
+                    break;
+                    // 8XY2 - Sets VX to VX and VY (Bitwise AND operation)
+                case 0x0002:
+                    break;
+                    // 8XY3 - Sets VX to VX xor VY
+                case 0x0003:
+                    break;
+                    // 8XY4 - Adds VY to VX. VF is set to 1 when there's a carry, and to 0 when there isn't
+                case 0x0004:
+                    break;
+                    // 8XY5 - VY is subtracted from VX. VF is set to 0 when there's a borrow, and 1 when there isn't
+                case 0x0005:
+                    break;
+                    // 8XY6 - Stores the least signficiant bit of VX in VF and then shifts VX to the right by 1.
+                case 0x0006:
+                    break;
+                    // 8XY7 - Sets VX to VY minus VX. VF is set to 0 when there's a borrow, and 1 when there isn't.
+                case 0x0007:
+                    break;
+                    // 8XYE - Stores the most significant bit of VX in VF and then shifts VX to the left by 1.
+                case 0x000E:
+                    break;
+            }
+        // 9XY0 - Skips the next instruction if VX doesn't equal VY.
+        case 0x9000:
+            break;
         // ANNN - Sets I to the address NNN.
         // first four digits are opcode last 12 are data
         case 0xA000:
@@ -83,58 +147,57 @@ void emulateCycle() {
             index_register = current_opcode & 0x0FFF;
             program_counter += 2;
             break;
-
-        case 0x8000:
-            switch (current_opcode & 0x000F) {
-                // 8XY0 - Sets VX to the value of VY
-                case 0x0000:
+        // BNNN - Jumps to the address NNN plus V0.
+        case 0xB000:
+            break;
+        // CXNN - Sets VX to the result of a bitwise and operation on a random number.
+        case 0xC000:
+            break;
+        // DXYN - Draws a sprite at coordinate (VX, VY) that has a width of 8 pixels and a height of N+1 pixels.
+        case 0xD000:
+            break;
+        case 0xE000:
+            switch (current_opcode & 0x00FF) {
+                // EX9E - Skips the next instruction if the key stored in VX is pressed.
+                case 0x009E:
                     break;
-                // 8XY1 - Sets VX to VX or VY (Bitwise OR Operation)
-                case 0x0001:
-                    break;
-                // 8XY2 - Sets VX to VX and VY (Bitwise AND operation)
-                case 0x0002:
-                    break;
-                // 8XY3 - Sets VX to VX xor VY
-                case 0x0003:
-                    break;
-                // 8XY4 - Adds VY to VX. VF is set to 1 when there's a carry, and to 0 when there isn't
-                case 0x0004:
-                    break;
-                // 8XY5 - VY is subtracted from VX. VF is set to 0 when there's a borrow, and 1 when there isn't
-                case 0x0005:
-                    break;
-                // 8XY6 - Stores the least signficiant bit of VX in VF and then shifts VX to the right by 1.
-                case 0x0006:
-                    break;
-                // 8XY7 - Sets VX to VY minus VX. VF is set to 0 when there's a borrow, and 1 when there isn't.
-                case 0x0007:
-                    break;
-                // 8XYE - Stores the most significant bit of VX in VF and then shifts VX to the left by 1. 
-                case 0x000E:
+                // EXA1 - Skips the next instruction if the key stored in VX isn't pressed.
+                case 0x00A1:
                     break;
             }
-        case 0x0000:
-            switch (current_opcode & 0x0FFF) {
-                // just checking the last 3 digits
-                // Clears the screen.
-                case 0x00E0:
+        case 0xF000:
+            switch (current_opcode & 0x00FF) {
+                // FX07 - Sets VX to the value of the delay timer.
+                case 0x0007:
                     break;
-                // returns from a subroutine.
-                case 0x00EE:
+                // FX0A - A key press is awaited, and then stored in VX.
+                case 0x000A:
+                    break;
+                // FX15 - Setes the delay timer to VX.
+                case 0x0015:
+                    break;
+                // FX18 - sets the sound timer to VX.
+                case 0x0018:
+                    break;
+                // FX1E - Adds VX to I.
+                case 0x001E:
+                    break;
+                // FX29 - Sets I to the location of the sprite for the characater in VX.
+                case 0x0029:
+                    break;
+                // FX33
+                case 0x0033:
+                    break;
+                // FX55 - Stores V0 to VX (including VX) in memory starting at address I.
+                case 0x0055:
+                    break;
+                // FX65 - Fills V0 to VX (including VX) with values from memory starting at address I.
+                case 0x0065:
                     break;
             }
 
         default:
             printf("Unknown opcode: 0x%X\n", current_opcode);
-    }
-
-    // first 8 digits are the same
-    switch(current_opcode & 0x00FF) {
-        case 0x00E0:
-            break;
-        case 0x00EE:
-            break;
     }
 
     // Execute Opcode

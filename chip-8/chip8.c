@@ -200,7 +200,15 @@ void emulateCycle() {
             printf("Unknown opcode: 0x%X\n", current_opcode);
     }
 
-    // Execute Opcode
-
     // Update timers
+    if (delay_timer > 0) {
+        --delay_timer;
+    }
+
+    if (sound_timer > 0) {
+        if (sound_timer == 1) {
+            puts("BEEP!");
+        }
+        --sound_timer;
+    }
 }
